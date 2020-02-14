@@ -1,0 +1,22 @@
+package seleniumDemo;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.By.ByTagName;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class sel_asgnmt1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\aish2\\Desktop\\Selenium_chromedriver\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.navigate().to("https://ironspider.ca/forms/dropdowns.htm");		
+		// ChromeDriver dri = new ChromeDriver();
+		
+		WebElement ele = driver.findElement()
+		
+	}
+
+}

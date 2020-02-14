@@ -1,0 +1,44 @@
+package seleniumDemo;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.By.ByTagName;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class sel_asgnmt1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\aish2\\Desktop\\Selenium_chromedriver\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.navigate().to("https://adactin.com/HotelApp/");		
+		// ChromeDriver dri = new ChromeDriver();
+		
+		WebElement user = driver.findElement(By.id("username"));
+		user.sendKeys("Aishu123");
+		
+		WebElement pswd = driver.findElement(By.name("password"));
+		pswd.sendKeys("Adhi12");
+		
+		WebElement btn = driver.findElement(By.id("login"));
+		btn.click();
+		
+		WebElement loc = driver.findElement(By.id("location"));
+		Select obj = new Select(loc);
+		
+		obj.selectByValue("New York");
+		boolean optmul = obj.isMultiple();
+		System.out.println("is loc a multiple dropdown? "o+ptmul);
+		
+	
+		
+		
+		
+		
+		driver.quit();
+		
+	}
+
+}

@@ -1,0 +1,70 @@
+package Asgnmt_package;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class Dresses_ObjectPage extends Dresses_BasePage {
+	
+	//Women tab
+	@FindBy(xpath="//*[@id=\"block_top_menu\"]/ul/li[1]/a")	
+	private WebElement WomenTab;	
+	public WebElement getWomenTab() {
+		return WomenTab; 
+	}
+	
+	//Dresses tab
+	@FindBy(xpath="//*[@id=\'block_top_menu\']/ul/li[2]/a")
+	private WebElement DressesTab;
+	public WebElement getDressesTab() {
+		return DressesTab;
+	}
+	
+	//T-shirts tab
+	@FindBy(xpath="//*[@id=\'block_top_menu\']/ul/li[3]/a")
+	private WebElement TshirtsTab;
+	public WebElement getTshirtsTab() {
+		return TshirtsTab;
+	}
+	
+	//S size 
+	@FindBy(xpath="//a[@text()='S']")
+	private WebElement sizeSCheckbox;
+	public WebElement getsizeSCheckbox() {
+		return sizeSCheckbox;
+	}
+	
+	//M size
+	@FindBy(xpath="//a[@text()='M']")
+	private WebElement sizeMCheckbox;
+	public WebElement getsizeMCheckbox() {
+		return sizeMCheckbox;
+	}
+	
+	//L size
+	@FindBy(xpath="//a[@text()='L]")
+	private WebElement sizeLCheckbox;
+	public WebElement getsizeLCheckbox() {
+		return sizeLCheckbox;
+	}
+	
+	//Product count
+	@FindBy(xpath="//span[text()='There are 5 products.']")
+	private WebElement prodCount;
+	public WebElement getProdCount() {
+		return prodCount;
+	}
+	
+	//Result count
+	@FindBy(xpath="//div[@class='product-count']")
+	private WebElement resultCount;
+	public WebElement getResultCount() {
+		return resultCount;
+	}
+	
+	//Constructor
+	public Dresses_ObjectPage() {
+		PageFactory.initElements(driver,this);
+	}
+
+}

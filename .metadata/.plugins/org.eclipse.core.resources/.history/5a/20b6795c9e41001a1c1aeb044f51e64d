@@ -1,0 +1,80 @@
+package seleniumDemo;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.By.ByTagName;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class sel_asgnmt1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\aish2\\Desktop\\Selenium_chromedriver\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.navigate().to("https://adactin.com/HotelApp/");		
+		// ChromeDriver dri = new ChromeDriver();
+		
+		WebElement user = driver.findElement(By.id("username"));
+		user.sendKeys("Aishu123");
+		
+		WebElement pswd = driver.findElement(By.name("password"));
+		pswd.sendKeys("Adhi12");
+		
+		WebElement btn = driver.findElement(By.id("login"));
+		btn.click();
+		
+		//To seelct location dropdown and give appropriate value
+		
+		WebElement loc = driver.findElement(By.id("location"));
+		Select obj = new Select(loc);
+		obj.selectByValue("New York");
+		
+		boolean optmul = obj.isMultiple();
+		///System.out.println("is loc a multiple dropdown? "+optmul);
+		
+		//To display entire options available under "location" dropdown box
+		List<WebElement> list = obj.getOptions();
+		for(WebElement a:list) {
+			//System.out.println(a.getText());
+		}
+		
+		// To find "hotels" dropdown
+		WebElement hotel = driver.findElement(By.id("hotels"));
+		Select obj1 = new Select(hotel);
+		obj1.selectByValue("Hotel Sunshine");
+		
+		//To find "roomtype" dropdown & set value for that
+		WebElement room_type = driver.findElement(By.id("room_type"));
+		Select obj2 = new Select(room_type);
+		obj2.selectByValue("Double");
+		
+		//To find "number of rooms" dropdown & select app value
+		WebElement number_of_rooms = driver.findElement(By.id("room_nos"));
+		Select obj3 = new Select(number_of_rooms);
+		obj3.selectByValue("2");
+		
+		//To find "Adults per room " dropdown & select app value
+		WebElement adults_per_room = driver.findElement(By.id("adult_room"));
+		Select obj4 = new Select(adults_per_room);
+		obj4.selectByValue("2");
+		
+		//To click "search" button
+		WebElement submit = driver.findElement(By.id("Submit"));
+		submit.click();
+		
+		
+		
+		
+		
+		
+		
+		
+		//driver.quit();
+		
+	}
+
+}

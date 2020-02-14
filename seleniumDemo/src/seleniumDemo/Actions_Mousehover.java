@@ -1,0 +1,30 @@
+package seleniumDemo;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Actions_Mousehover {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\aish2\\Desktop\\Selenium_chromedriver\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.navigate().to("http://automationpractice.com/index.php");
+		
+		WebElement tar = driver.findElement(By.xpath("(//*[@title='Women'][1])"));
+		Actions act = new Actions(driver);
+		act.moveToElement(tar).build().perform();		
+		
+		WebElement ele = driver.findElement(By.name("SubmitNewsletter"));
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].scrollIntoView(true);",ele);
+		
+		
+		
+		
+	}
+
+}

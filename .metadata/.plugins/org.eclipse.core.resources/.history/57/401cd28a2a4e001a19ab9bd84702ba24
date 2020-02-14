@@ -1,0 +1,139 @@
+package Asgnmt_package;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class Dresses_ProductPage extends Dresses_BasePage {
+	
+	//Pagefactory
+	public Dresses_ProductPage() {
+		PageFactory.initElements(driver, this);
+	}
+	
+	//S size 
+		//@FindBy(xpath="//a[@text()='S']")
+		@FindBy(xpath="//*[@id='ul_layered_id_attribute_group_1']/li[1]/label/a")
+		private WebElement sizeSCheckbox;
+		public WebElement getsizeSCheckbox() {
+			return sizeSCheckbox;
+		}
+		
+		//M size
+		//@FindBy(xpath="//a[@text()='M']")
+		@FindBy(xpath="//*[@id='ul_layered_id_attribute_group_1']/li[2]/label/a")
+		private WebElement sizeMCheckbox;
+		public WebElement getsizeMCheckbox() {
+			return sizeMCheckbox;
+		}
+		
+		//L size
+		//@FindBy(xpath="//a[@text()='L]")
+		@FindBy(xpath="//*[@id='ul_layered_id_attribute_group_1']/li[3]/label/a")
+		private WebElement sizeLCheckbox;
+		public WebElement getsizeLCheckbox() {
+			return sizeLCheckbox;
+		}
+		
+		//Product count
+		@FindBy(xpath="//span[text()='There are 5 products.']")
+		private WebElement prodCount;
+		public WebElement getProdCount() {
+			return prodCount;
+		}
+		
+		//Result count
+		//@FindBy(xpath="//div[@class='product-count']")
+		//private WebElement resultCount;
+		public String ResultCount() {
+			Dresses_ObjectPage op;
+			op = new Dresses_ObjectPage();
+			
+			Dresses_BasePage bp = new Dresses_BasePage();
+			op.getDressesTab().click();
+			List<WebElement> list = bp.driver.findElements(By.xpath("//ul[@class='product_list grid row']li"));
+			int size = list.size();
+			System.out.println("Size of list==>>"+size);
+			
+			WebElement ele = bp.driver.findElement(By.xpath("//span[@class='heading-counter']"));
+			String str = ele.getText();
+			
+			int x = Integer.parseInt(str.split(" ")[2]); 
+			System.out.println("x value ==>>"+x);
+			
+			String resultCount;
+			
+			if (size==x ) {
+				resultCount = "Product Count & Result Count are equal";
+				System.out.println("Product Count & Matching Result Count are equal");
+			} else {
+				resultCount = "Product Count & Result Count are not equal";
+				System.out.println("Product Count & Matching Result Count are not equal");
+			}
+			
+			return resultCount;
+		}
+		
+		//Newsletter
+		@FindBy(xpath="//input[@name='email']")
+		private WebElement newsLetter_email;
+		public WebElement newsLetterSubscription() {
+			return newsLetter_email;
+		}
+		
+		//subscribe button
+		//@FindBy(xpath="button[name='submitNewsletter']")
+		@FindBy(xpath="//*[@id='newsletter_block_left']/div/form/div/button")
+		private WebElement subscribeButton;
+		public WebElement subscribe_Btn( ) {
+			return subscribeButton;
+		}
+		
+		//Alert msg
+		@FindBy(xpath="//*[@id='columns']/p")
+		//*[@id="columns"]/p/text()  
+		private WebElement alertMsg;
+		public String getAlertMsg() {
+			return alertMsg.getText();
+		}
+		
+		//Cart
+		@FindBy(xpath="[title='View my shopping cart']")
+		private WebElement cart;
+		public WebElement cart() {
+			return cart;
+		}
+		//Adding 1st product to cart by clicking on first product //*[text()="Orange, S"]  //*[@id="center_column"]/ul/li[1]/div/div[1]/div/a[1]/img
+		@FindBy(xpath="//*[@id='center_column']/ul/li[1]/div/div[1]/div/a[1]/img")  
+		private WebElement firstProduct;
+		public WebElement addFirstProduct() {
+			return firstProduct;
+		}		
+		
+		//Webelement for product added msg
+		@FindBy(xpath="//*[@id='layer_cart']/div[1]/div[1]/h2/text()")
+		private WebElement prod_Added;
+		public String product_AddedMsg() {
+			String prodt_Added = prod_Added.getText();
+			return prodt_Added;
+		}
+		// Click on "add to cart" button
+		@FindBy(xpath="//button[@class='exclusive']")  
+		//@FindBy(xpath="//a[@id='wishlist_button']")
+		
+		private WebElement addToCart_btn;
+		public void addToCart() {
+			addToCart_btn.click();
+		}
+		
+		//product in cart
+		@FindBy(xpath="//*[@id='product_3_13_0_0']/td[2]/small[1]")
+		private WebElement prod_inCart;
+		public WebElement product_in_Cart() {
+			return prod_inCart;
+		}
+
+}

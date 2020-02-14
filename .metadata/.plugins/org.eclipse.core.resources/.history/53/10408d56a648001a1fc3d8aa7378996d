@@ -1,0 +1,65 @@
+package Test;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import Asgnmt_package.Dresses_BasePage;
+import Asgnmt_package.Dresses_ObjectPage;
+
+public class Dresses_Test {
+	Dresses_BasePage bp;
+	Dresses_ObjectPage op;
+	
+	public Dresses_Test() {
+		bp = new Dresses_BasePage();
+		op = new Dresses_ObjectPage();
+	}
+	
+	//Verify Women tag
+	@Test
+	public void verifyWomenTab() {
+		Assert.assertTrue(bp.elementFound(op.getWomenTab()), "Failed to verify Women tab");
+	}
+	
+	@Test
+	public void verifyDressesTab() {
+		Assert.assertTrue(bp.elementFound(op.getDressesTab()),"Failed to verify Dresses Tab");
+	}
+	
+	@Test
+	public void verifyTshirtsTab() {
+		Assert.assertTrue(bp.elementFound(op.getTshirtsTab()),"Failed to verify TShirts tab");
+	}
+	
+	@Test
+	public void verifyWomenTab_onClick() {
+		op.getWomenTab().click();
+		//bp.getTitle();
+		//Assert.assertEquals(bp.getTitle(), "http://automationpractice.com/index.php?id_category=3&controller=category", "Page navigation failed");
+	}
+	
+	@Test
+	public void verifyDressesTab_onClick() {
+		op.getDressesTab().click();
+	}
+	
+	@Test
+	public void verifyTShirtsTab_onClick() {
+		op.getTshirtsTab().click();
+	}
+	
+	@Test
+	public void verifySSize() {
+		Assert.assertTrue(bp.isElementVisible(op.getsizeSCheckbox()),"Failed to display Size S ");
+	}
+	
+	@Test
+	public void verifyMSize() {
+		Assert.assertTrue(bp.isElementVisible(op.getsizeMCheckbox()), "Failed to display size M ");
+	}
+	
+	@Test
+	public void verifyLSize() {
+		Assert.assertTrue(bp.isElementVisible(op.getsizeLCheckbox()),"Failed to display size L");
+	}
+}

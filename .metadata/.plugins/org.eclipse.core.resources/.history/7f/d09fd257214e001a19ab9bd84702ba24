@@ -1,0 +1,65 @@
+package Asgnmt_package;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class Dresses_ProductPage {
+	@Test
+	public void verifyWomenTab_onClick() {
+		op.getWomenTab().click();
+		//bp.getTitle();
+		//Assert.assertEquals(bp.getTitle(), "http://automationpractice.com/index.php?id_category=3&controller=category", "Page navigation failed");
+	}
+	
+	@Test
+	public void verifyDressesTab_onClick() {
+		op.getDressesTab().click();
+	}
+	
+	@Test
+	public void verifyTShirtsTab_onClick() {
+		op.getTshirtsTab().click();
+	}
+	
+	@Test
+	public void verifySSize() {
+		//Assert.assertTrue(bp.elementFound(op.getsizeSCheckbox()),"Failed to display size S details");
+		Assert.assertTrue(bp.isElementVisible(op.getsizeSCheckbox()),"Failed to display Size S ");
+	}
+	
+	@Test
+	public void verifyMSize() {
+		//Assert.assertTrue(bp.elementFound(op.getsizeMCheckbox()), "Failed to display size M size");
+		Assert.assertTrue(bp.isElementVisible(op.getsizeMCheckbox()), "Failed to display size M ");
+	}
+	
+	@Test
+	public void verifyLSize() {
+		//Assert.assertTrue(bp.elementFound(op.getsizeLCheckbox()), "Failed to display L size");
+		Assert.assertTrue(bp.isElementVisible(op.getsizeLCheckbox()),"Failed to display size L");
+	}
+	
+	//@Test
+	//public void verifyProductCount() {
+	//	Assert.assertEquals(op.ResultCount(), "Product Count & Result Count are equal", "Failed since product count & result count are not equal");
+//	}
+	
+	@Test
+	public void verifyNewsLetterSubscription() {
+		bp.setText(op.newsLetterSubscription(), "i20@gmail.com");
+		op.subscribe_Btn().click();
+		op.getAlertMsg();
+		System.out.println("Alert Msg==>>"+op.getAlertMsg());
+	}
+	
+	@Test
+	public void verify_FirstProduct_addedtoCart() {
+		op.getDressesTab().click();
+		op.addFirstProduct();
+		System.out.println("After op.addFirstProduct function call and before executing op.addToCart() function ");
+		op.addToCart();
+		System.out.println("product added msg==>>"+op.product_AddedMsg());
+		//System.out.println("product in cart text==>>"+op.product_in_Cart().getText());
+	}
+
+}
